@@ -1,0 +1,128 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analyzer</title>
+</head>
+<body>
+    <div class="mainc">
+        <h1>
+            REVIEW ANALYZER FOR PRODUCT
+        </h1>
+        <form method="post" action="{% url 'output' %}">
+            {% csrf_token %}
+            <label for="url"><strong>Product URL:</strong></label><br>
+            <input type="text" name="url" placeholder="Enter a valid product link" required/>
+            <br>
+            <button type="submit">Analyze</button>
+        </form>
+    </div>
+    
+    <style>
+        /* Background Styling */
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        /* Main Container Styling */
+        .mainc {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        /* Form Heading */
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            animation: fadeInDown 1s ease;
+        }
+
+        /* Label Styling */
+        label {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        /* Input Styling */
+        input {
+            width: 100%;
+            height: 40px;
+            border-radius: 20px;
+            padding: 0 15px;
+            border: 1px solid #fff;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: #cfd8dc;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 8px #fff;
+            border-color: #64b5f6;
+        }
+
+        /* Button Styling */
+        button {
+            height: 40px;
+            width: 120px;
+            background: linear-gradient(to right, #64b5f6, #42a5f5);
+            border: none;
+            color: #fff;
+            border-radius: 20px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #42a5f5, #2196f3);
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        /* Basic Reset */
+        body, h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: linear-gradient(to right, #ff7e5f, #817bfe);
+            color: #333;
+            font-size: 16px;
+        }
+        
+        /* Link Style */
+        a {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        a:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        /* Main Container Style */
+        .contain {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Heading Styles */
+        h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        h2 {
+            font-size: 24px;
+            color: #fff;
+            background-color: #333;
+            padding: 10px 20px;
+            border-radius: 8px;
+            animation: slideIn 1s ease-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            font-size: 18px;
+            background-color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px 0;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: bounceIn 1s ease-out;
+        }
+
+        .op {
+            background-color: lightblue;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* CSS Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            .contain {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2, h3 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'link' %}">Home</a>
+    <div class="contain">
+        <h1>Result</h1>
+        {% if results %}
+        <h2> Product Name : {{results.title}} </h2>
+        <h3> Rating : {{results.rating}}</h3>  
+        <h3> Positive : {{results.positive}}% 
+            Negative : {{results.negative}}% 
+            Neutral : {{results.neutral}}% </h3>
+        
+        <h3 class="op">
+            Overall Sentiment : {{results.overall_r}}
+        </h3>
+        {% endif %}
+    </div>
+</body>
+</html>
